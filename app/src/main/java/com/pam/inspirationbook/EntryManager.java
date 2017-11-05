@@ -20,7 +20,7 @@ public class EntryManager {
     private Context mContext;
     private SQLiteDatabase mDatabase;
 
-    private static final String TAG = "GERM.entrymanager";
+    private static final String TAG = "InspirationBoard.entrymanager";
 
     public static EntryManager get(Context context) {
         Log.d(TAG, "get method");

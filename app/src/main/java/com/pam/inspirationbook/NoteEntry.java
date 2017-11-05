@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 
 public class NoteEntry extends Entry{
-    private static final String TAG = "GERM.textentryclass";
+    private static final String TAG = "InspirationBoard.noteentryclass";
 
     public NoteEntry(String text) {
         super();

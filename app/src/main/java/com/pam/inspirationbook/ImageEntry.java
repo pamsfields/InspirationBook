@@ -13,22 +13,18 @@ public class ImageEntry extends Entry{
     public int mResourceId;
     private static int COUNTER = 0;
 
-    private static final String TAG = "GERM.imageentry";
+    private static final String TAG = "InspirationBoard.imageentry";
 
     public ImageEntry () {
         super();
 
         Integer[] thumbIds = {
+                R.drawable.sample
         };
         mResourceId = thumbIds[COUNTER];
+        COUNTER++;
 
-        if (COUNTER == 6) {
-            COUNTER = 0;
-        } else {
-            COUNTER ++;
-        }
-
-//        EntryManager.sEntryManager.addEntry(this);
+        EntryManager.sEntryManager.addEntry(this);
     }
 
     public ImageEntry (UUID id) {

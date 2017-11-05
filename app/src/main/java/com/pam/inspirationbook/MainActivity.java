@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static android.app.Activity.RESULT_OK;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -85,7 +84,11 @@ public class MainActivity extends AppCompatActivity {
         mTakePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                takePhoto();
+                try {
+                    takePhoto();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         mTakeNote.setOnClickListener(new View.OnClickListener() {
@@ -98,12 +101,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+
+                // Create and show the dialog.
+                AddTextDialogFrag newFragment = new AddTextDialogFrag();
+                newFragment.show(ft, "add entry dialog");
             }
         });
 
     }
 
-    private void takePhoto() {
+    private void takePhoto() throws IOException {
 
         Intent pictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -118,17 +131,12 @@ public class MainActivity extends AppCompatActivity {
             File imageFile = null;
             Uri imageFileUri = null;
 
-            try {
                 //Create a temporary file with this name and path
                 imageFile = File.createTempFile(imageFilename, ".jpg", storageDirectory);
                 mImagePath = imageFile.getAbsolutePath(); //Save path in global variable
                 //Create an URI from the path; the Intent will send this to the camera. A URI defines a location and how to access it
                 //For example content://com.pam.simplecamera/my_images/simple_camera_1505239810320934713.jpg
                 imageFileUri = FileProvider.getUriForFile(MainActivity.this, "com.pam.inspirationbook", imageFile);
-            } catch (IOException ioe) {
-                Log.e(TAG, "Error creating file for photo storage", ioe);
-                return; //Will be unable to continue if unable to access storage
-            }
             //So if creating the temporary file worked, should have a value for imageFileUri. Include this URI as an extra
             pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
 
@@ -259,14 +267,18 @@ public class MainActivity extends AppCompatActivity {
     public void updateUI() {
         ArrayList<Entry> entries = sEntryManager.getEntries();
 
-        if (sAdapter == null) {
-            sAdapter = new EntryRecyclerAdapter(sEntryLoader);
-            mEntryRecyclerView.setAdapter(sAdapter);
-
-        } else {
-            sAdapter.setEntries(entries);
-            sAdapter.notifyDataSetChanged();
+        if(entries.size()<=0)
+        {
+            mViewGallery.setEnabled(false);
         }
+            if (sAdapter == null) {
+                sAdapter = new EntryRecyclerAdapter(sEntryLoader);
+                mEntryRecyclerView.setAdapter(sAdapter);
+
+            } else {
+                sAdapter.setEntries(entries);
+                sAdapter.notifyDataSetChanged();
+            }
     }
 
 

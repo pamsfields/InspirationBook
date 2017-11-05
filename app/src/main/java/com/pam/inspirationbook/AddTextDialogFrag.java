@@ -15,7 +15,7 @@ import android.widget.EditText;
 
 public class AddTextDialogFrag extends DialogFragment {
 
-    private static final String TAG = "GERM.addentrydialogfrag";
+    private static final String TAG = "InspirationBoard.addentrydialogfrag";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
