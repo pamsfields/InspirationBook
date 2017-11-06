@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView mCameraPicture;
     Button mTakeNote;
     Button mViewGallery;
+    Button mSearch;
 
     //To identify the which permission request is returning a result
     private static final int REQUEST_SAVE_IMAGE_PERMISSON_REQUEST_CODE = 1001;
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             mImagePath = savedInstanceState.getString(IMAGE_FILEPATH_KEY);
         }
 
+        mSearch = (Button) findViewById(R.id.btn_search);
         mTakeNote = (Button) findViewById(R.id.btn_create_note);
         mViewGallery = (Button) findViewById(R.id.btn_getgallery);
         mCameraPicture = (ImageView) findViewById(R.id.camera_picture);
@@ -111,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
                 // Create and show the dialog.
                 AddTextDialogFrag newFragment = new AddTextDialogFrag();
                 newFragment.show(ft, "add entry dialog");
+            }
+        });
+        mSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO need to figure this out
             }
         });
 

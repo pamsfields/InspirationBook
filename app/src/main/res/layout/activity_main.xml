@@ -32,11 +32,19 @@
         android:layout_marginStart="4dp"
         android:text="View Gallery"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/btn_getgallery"
+        android:text="Search"
+        android:id="@+id/btn_search"/>
+
     <ImageView
         android:id="@+id/camera_picture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/btn_getgallery"/>
+        android:layout_below="@+id/btn_search"/>
 
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
