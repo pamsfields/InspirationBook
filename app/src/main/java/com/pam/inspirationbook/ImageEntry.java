@@ -18,9 +18,7 @@ public class ImageEntry extends Entry{
     public ImageEntry () {
         super();
 
-        Integer[] thumbIds = {
-                R.drawable.sample
-        };
+        Integer[] thumbIds = {};
         mResourceId = thumbIds[COUNTER];
         COUNTER++;
 

@@ -27,9 +27,9 @@ public class EntryLoader {
         for (int i = CurrentPageValue; i < CurrentPageValue + itemsPerPage; i++) {
 
             if (i%2 == 0) {
-
                 ImageEntry newImageEntry = new ImageEntry();
                 mEntries.add(newImageEntry);
+                Log.d(TAG, newImageEntry.toString());
 
             } else {
                 NoteEntry newNoteEntry = new NoteEntry("’Please enter a phrase that inspires you:");

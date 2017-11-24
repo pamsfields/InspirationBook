@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -97,6 +98,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showAddEntryDialog();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
             }
         });
         mViewGallery.setOnClickListener(new View.OnClickListener() {
@@ -109,10 +116,6 @@ public class MainActivity extends AppCompatActivity {
                     ft.remove(prev);
                 }
                 ft.addToBackStack(null);
-
-                // Create and show the dialog.
-                AddTextDialogFrag newFragment = new AddTextDialogFrag();
-                newFragment.show(ft, "add entry dialog");
             }
         });
         mSearch.setOnClickListener(new View.OnClickListener() {
@@ -253,7 +256,8 @@ public class MainActivity extends AppCompatActivity {
         else {
             //This request opens a dialog box for the user to accept the permission request.
             //When the user clicks ok or cancel, the onRequestPermission method (below) is called with the results
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_SAVE_IMAGE_PERMISSON_REQUEST_CODE);
+
+            ActivityCompat.requestPermissions(this, new String[cursor.getCount()]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_SAVE_IMAGE_PERMISSON_REQUEST_CODE);
         }
     }
 
