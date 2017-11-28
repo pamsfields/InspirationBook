@@ -1,6 +1,8 @@
 package com.pam.inspirationbook;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.widget.Toast;
 
 import java.util.UUID;
 
@@ -17,12 +19,13 @@ public class ImageEntry extends Entry{
 
     public ImageEntry () {
         super();
+        if (COUNTER != 0) {
+            Integer[] thumbIds = {};
+            mResourceId = thumbIds[COUNTER];
+            COUNTER++;
 
-        Integer[] thumbIds = {};
-        mResourceId = thumbIds[COUNTER];
-        COUNTER++;
-
-        EntryManager.sEntryManager.addEntry(this);
+            EntryManager.sEntryManager.addEntry(this);
+        }
     }
 
     public ImageEntry (UUID id) {

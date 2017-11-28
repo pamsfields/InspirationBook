@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
             //This request opens a dialog box for the user to accept the permission request.
             //When the user clicks ok or cancel, the onRequestPermission method (below) is called with the results
 
-            ActivityCompat.requestPermissions(this, new String[cursor.getCount()]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_SAVE_IMAGE_PERMISSON_REQUEST_CODE);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_SAVE_IMAGE_PERMISSON_REQUEST_CODE);
         }
     }
 
