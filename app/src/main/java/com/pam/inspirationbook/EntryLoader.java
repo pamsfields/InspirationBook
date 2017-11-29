@@ -14,7 +14,7 @@ public class EntryLoader {
     public int CurrentPageValue;
     public boolean CanLoadMoreItems;
 
-    private static final String TAG = "GERM.entryloader";
+    private static final String TAG = "InspirationBoard.entryloader";
 
     public EntryLoader()
     {
