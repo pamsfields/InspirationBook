@@ -68,12 +68,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setupUiElements();
-        try{
+        /*try{
             updateUI();
 
         }catch(ArrayIndexOutOfBoundsException e){
             Toast.makeText(MainActivity.this, "Please enter a note or image", Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
         if (savedInstanceState != null) {
             mImagePath = savedInstanceState.getString(IMAGE_FILEPATH_KEY);

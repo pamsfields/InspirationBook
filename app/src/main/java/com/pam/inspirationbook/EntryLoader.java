@@ -33,7 +33,7 @@ public class EntryLoader {
 
             } else {
                 NoteEntry newNoteEntry = new NoteEntry("’Please enter a phrase that inspires you:");
-                EntryManager.sEntryManager.addEntry(newNoteEntry);
+                //EntryManager.sEntryManager.addEntry(newNoteEntry);
                 mEntries.add(newNoteEntry);
                 Log.d(TAG, newNoteEntry.toString());
 
