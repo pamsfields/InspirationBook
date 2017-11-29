@@ -14,7 +14,7 @@ public class EntryDatabaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String DATABASE_NAME = "entryDatabase.db";
 
-    private static final String TAG = "GERM.entryDbHelper";
+    private static final String TAG = "InspirationBoard.entryDbHelper";
 
     public EntryDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
